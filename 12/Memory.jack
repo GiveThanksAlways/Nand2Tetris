@@ -11,48 +11,57 @@
 
 class Memory {
 
-    static int heapStart, heapEnd, freeListPointer, heapLength;
+    static int heapStart, heapEnd, heapLength;
 
     static LinkedList freeList;
 
     // Initializes the class.
-    function void theinit() {
+    function void init() {
 
       let heapStart = 2048;
       let heapEnd   = 16483;
       let heapLength = (heapEnd - heapStart);
-      let freeListPointer = heapStart;
-      let freeList = LinkedList.new(heapLength,heapStart,null);
+      let freeList = LinkedList.new(0,0,null);
+      let freeList = LinkedList.new(heapLength,heapStart,freeList);
+
 
       return;
     }
 
     /** Returns the RAM value at the given address. */
     function int peek(int address) {
-      return 1;
+      var Array memory;
+      let memory = 0;
+      return memory[address];
     }
 
     /** Sets the RAM value at the given address to the given value. */
     function void poke(int address, int value) {
+      var Array memory;
+      let memory = 0;
+      let memory[address] = value;
       return;
     }
 
     /** Finds an available RAM block of the given size and returns
      *  a reference to its base address. */
-    function int alloc(int size) {
-      var int block;
-
-      // before you start the walk, make sure the heapIndex starts at the beginning
-      let heapIndex = heapStart;
-
-      let block =  freeList.transverseAlloc(); // function will return the block location in heap
-
-      return 1;
+    function Array alloc(int size) {
+      var Array returnArray;
+      let returnArray =  freeList.transverseAlloc(); // function will return the array of the block
+      return returnArray;
     }
 
     /** De-allocates the given object (cast as an array) by making
      *  it available for future allocations. */
     function void deAlloc(Array o) {
+      var int segmentPointer;
+      var int segmentLength;
+      let segmentPointer = o - 1;
+      let segmentLength = o[-1];
+
+      let freeList = LinkedList.new(segmentLength,segmentPointer, freeList);
+
+
       return;
     }
 }
