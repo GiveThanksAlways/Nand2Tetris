@@ -2,10 +2,13 @@
 
 
 class LinkedList {
+
 	field int length; // length of the list
 	field int pointer; // the pointer of the block (where it actually is)
 	field LinkedList next; // point to the next list
 	field Array blockArray; // the array of the list
+
+	// static LinkedList freeList;
 
 	// construct a new list
 	constructor LinkedList new(int inputlength,int thePointer, LinkedList node){
@@ -45,6 +48,9 @@ class LinkedList {
 		// using recursion
 		var int heapIndex;
 		var Array block;
+		var LinkedList nextSub;
+
+		let nextSub = next;
 
 		// let block = 0;
 		// let x = block[j] // j is a RAM address

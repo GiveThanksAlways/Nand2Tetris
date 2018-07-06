@@ -51,9 +51,11 @@ call Memory.deAlloc 1
 pop temp 0
 push constant 0
 return
-function LinkedList.transverseAlloc 2
+function LinkedList.transverseAlloc 3
 push argument 0
 pop pointer 0
+push this 2
+pop local 2
 push this 2
 push constant 0
 eq
