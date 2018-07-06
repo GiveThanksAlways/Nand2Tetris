@@ -47,12 +47,10 @@ push temp 0
 pop that 0
 push constant 0
 return
-function Memory.alloc 1
+function Memory.alloc 0
 push argument 0
 push static 0
 call Memory.allocRecursion 2
-pop temp 0
-push local 0
 return
 function Memory.allocRecursion 5
 push argument 1

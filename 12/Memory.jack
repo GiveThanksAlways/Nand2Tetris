@@ -50,14 +50,14 @@ class Memory {
     /** Finds an available RAM block of the given size and returns
      *  a reference to its base address. */
     function Array alloc(int size) {
-      var int localpointer;
+      //var int localpointer;
 
-      let localpointer = RAM[1];
-      do Memory.allocRecursion(size,heapStart); // pops the value to temp0 b/c it is a function
+      //let localpointer = RAM[1];
+      return Memory.allocRecursion(size,heapStart); // pops the value to temp0 b/c it is a function
       // I need to manually make the compiler push temp0 to the Local 0 before return
-      let RAM[localpointer] = RAM[5];
+      // let RAM[localpointer] = RAM[5];
 
-      return;
+      //return;
 
     }
 
