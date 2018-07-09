@@ -17,14 +17,13 @@ class Memory {
 
     static Array RAM;
     static int currentNullPointer;
-    static int arrayReturnLocation;
 
     // Initializes the class.
     function void init() {
 
       let RAM = 0;
       let heapStart = 2048;
-      let heapEnd   = 16483;
+      let heapEnd   = 16384;
       let heapLength = (heapEnd - heapStart);
 
       let RAM[heapStart] = heapLength;
@@ -51,13 +50,17 @@ class Memory {
      *  a reference to its base address. */
     function Array alloc(int size) {
       //var int localpointer;
+	//do Memory.poke(4,heapStart);
+	//let RAM = 0;
+
+	//let RAM[4] = heapStart;
 
       //let localpointer = RAM[1];
       return Memory.allocRecursion(size,heapStart); // pops the value to temp0 b/c it is a function
       // I need to manually make the compiler push temp0 to the Local 0 before return
-      // let RAM[localpointer] = RAM[5];
+      //let RAM[localpointer] = RAM[5];
 
-      //return;
+      //return RAM;
 
     }
 
@@ -103,11 +106,11 @@ class Memory {
 
     /** De-allocates the given object (cast as an array) by making
      *  it available for future allocations. */
-    function void deAlloc(Array o) {
+    function void deAlloc(Array O) {
       var int segmentPointer, segmentLength;
 
-      let segmentPointer = o - 1;
-      let segmentLength = o[-1];
+      let segmentPointer = O -1 ;
+      let segmentLength = O[-1];
 
       do Memory.insert(heapStart,segmentPointer);
 
