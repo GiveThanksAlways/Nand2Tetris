@@ -1,6 +1,3 @@
-*.asm
-*.jack
 *.txt
-*.out
 *.cmp
-*.vm
+*.out
